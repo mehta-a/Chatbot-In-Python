@@ -23,7 +23,8 @@ def match_rule(rules, message):
             # Choose a random response
             response = random.choice(responses)
             if '{0}' in response:
-                phrase = response.format(match.group(1))
+                #phrase = response.format(match.group(1))
+                phrase = match.group(1)
     # Return the response and phrase`
     return response, phrase
 
@@ -37,13 +38,6 @@ def send_message(message):
     response = replace_pronouns(response)
     # Print the bot template including the bot's response.
     print(bot_template.format(response))
-
-def respond(message):
-    response, phrase = match_rule(rules, message)
-    if(phrase!=None):
-        return phrase
-    else:
-        return response
 
 # Define replace_pronouns()
 def replace_pronouns(message):
@@ -63,13 +57,20 @@ def replace_pronouns(message):
         return re.sub(" you ", " me ", message)
 
     return message
-print()
-print(replace_pronouns("my last birthday"))
-print(replace_pronouns("when you went to Florida"))
-print(replace_pronouns("I had my own castle"))
-print()
 
-# Test match_rule
-send_message("do you remember your last birthday?")
-send_message("I want you to recall the day")
-send_message("do you think it was special?")
+# Define respond()
+def respond(message):
+    # Call match_rule
+    response, phrase = match_rule(rules, message)
+    if '{0}' in response:
+        # Replace the pronouns in the phrase
+        phrase = replace_pronouns(phrase)
+        # Include the phrase in the response
+        response = response.format(phrase)
+    return response
+
+# Send the messages
+send_message("do you remember your last birthday")
+send_message("do you think humans should be worried about AI")
+send_message("I want a robot friend")
+send_message("what if you could be anything you wanted")
