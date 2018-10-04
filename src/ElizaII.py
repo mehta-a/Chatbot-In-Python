@@ -15,7 +15,6 @@ rules = {'I want (.*)': ['What would it mean if you got {0}', 'Why do you want {
 # Define match_rule()
 def match_rule(rules, message):
     response, phrase = "default", None
-
     # Iterate over the rules dictionary
     for pattern, responses in rules.items():
         # Create a match object
@@ -25,7 +24,7 @@ def match_rule(rules, message):
             response = random.choice(responses)
             if '{0}' in response:
                 phrase = response.format(match.group(1))
-    # Return the response and phrase
+    # Return the response and phrase`
     return response, phrase
 
 
