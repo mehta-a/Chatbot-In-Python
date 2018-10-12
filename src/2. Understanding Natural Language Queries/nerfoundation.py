@@ -14,18 +14,19 @@ print(list(bangalore.ancestors)[0])
 print(list(hyderabad.ancestors)[0])
 
 # assign roles
+# Create the document
+doc3 = nlp(u"let's see that jacket in red and some blue jeans")
+
+
 def entity_type(token):
     token_str = str(token)
-    item = ['jacket', 'jeans']
-    color = ['red','blue']
+    item = [doc3[4], doc3[10]]
+    color = [doc3[6], doc3[9]]
     if token_str in item:
         return "item"
     elif token_str in color:
         return "color"
     return "none"
-
-# Create the document
-doc = nlp(u"let's see that jacket in red and some blue jeans")
 
 # Iterate over parents in parse tree until an item entity is found
 def find_parent_item(word):
@@ -47,4 +48,4 @@ def assign_colors(doc):
             print("item: {0} has color : {1}".format(item, word))
 
 # Assign the colors
-assign_colors(doc)
+assign_colors(doc3)
