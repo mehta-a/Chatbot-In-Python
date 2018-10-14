@@ -1,5 +1,6 @@
 import sqlite3
 
+
 conn = sqlite3.connect('../../data/hotels.db')
 
 c = conn.cursor()
