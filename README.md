@@ -1,5 +1,7 @@
 # Chatbot-In-Python
 
+[![Contact me on Codementor](https://www.codementor.io/m-badges/ankitamehta283/im-a-cm-b.svg)](https://www.codementor.io/@ankitamehta283?refer=badge)
+
 This project is about building chatbot in python from scratch. It is broadly didvide into 4 parts:
 1. Basic Bot: Simple Rule based chatbot.
     - This include the following bots:
